@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeListBinding
 import kotlinx.coroutines.launch
 
-private const val TAG = "CrimeListFragment"
-
 class CrimeListFragment : Fragment() {
 
     private var _binding: FragmentCrimeListBinding? = null
@@ -44,9 +42,9 @@ class CrimeListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 crimeListViewModel.crimes.collect {crimes ->
-                    binding.crimeRecyclerView.adapter = CrimeListAdapter(crimes) {
+                    binding.crimeRecyclerView.adapter = CrimeListAdapter(crimes) { crimeId ->
                         findNavController().navigate(
-                            R.id.show_crime_detail
+                            CrimeListFragmentDirections.showCrimeDetail(crimeId)
                         )
                     }
                 }
