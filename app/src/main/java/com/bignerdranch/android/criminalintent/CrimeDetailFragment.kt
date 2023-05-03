@@ -113,12 +113,12 @@ class CrimeDetailFragment : Fragment() {
                 takePhoto.launch(photoUri)
             }
 
-/*            val captureImageIntent = takePhoto.contract.createIntent(
+            val captureImageIntent = takePhoto.contract.createIntent(
                 requireContext(),
                 // Different than book because non-null is expected
                 Uri.EMPTY
             )
-            crimeCamera.isEnabled = canResolveIntent(captureImageIntent)*/
+            crimeCamera.isEnabled = canResolveIntent(captureImageIntent)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
